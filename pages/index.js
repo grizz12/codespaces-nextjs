@@ -1,71 +1,47 @@
-import { useCallback, useEffect, useState } from 'react'
-import Button from '../components/Button'
-import ClickCount from '../components/ClickCount'
-import styles from '../styles/home.module.css'
-
-function throwError() {
-  console.log(
-    // The function body() is not defined
-    document.body()
-  )
-}
+import Button from "../components/Button";
+import Card from "../components/Card";
+import Overwiew from "../components/Overwiew";
+import Settings from "../components/Settings";
+import Shots from "../components/Shots";
 
 function Home() {
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => {
-    setCount((v) => v + 1)
-  }, [setCount])
-
-  useEffect(() => {
-    const r = setInterval(() => {
-      increment()
-    }, 1000)
-
-    return () => {
-      clearInterval(r)
-    }
-  }, [increment])
-
   return (
-    <main className={styles.main}>
-      <h1>Fast Refresh Demo</h1>
-      <p>
-        Fast Refresh is a Next.js feature that gives you instantaneous feedback
-        on edits made to your React components, without ever losing component
-        state.
-      </p>
-      <hr className={styles.hr} />
-      <div>
-        <p>
-          Auto incrementing value. The counter won't reset after edits or if
-          there are errors.
-        </p>
-        <p>Current value: {count}</p>
+    <body className="bg-gray-100 h-screen antialiased">
+      <div className="app">
+        <nav className="bg-white shadow">
+          <div className="md:max-w-5xl mx-auto flex justify-between items-center py-6">
+            <a href="#" className="block uppercase flex item-center">
+              <box-icon type="solid" name="rocket"></box-icon>
+              <span className="inline-block text-sm font-bold ml-2">
+                <span className="text-gray-700">Starter</span>
+              </span>
+            </a>
+            <div className="flex justify-between item-center">
+              <a
+                href="#"
+                className="block text-gray-700 hover:text-blue-600 px-4"
+              >
+                Trust
+              </a>
+              <a href="#" className="block text-gray-700 hover:text-blue-600">
+                Logout
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div className="py-6 md:max-w-5xl mx-auto flex mb-4 w-full">
+          <div className="w-2/12 p-2">
+            <Overwiew />
+            <Shots />
+            <Settings />
+          </div>
+          <Card>
+            <Button>View All</Button>
+          </Card>
+        </div>
       </div>
-      <hr className={styles.hr} />
-      <div>
-        <p>Component with state.</p>
-        <ClickCount />
-      </div>
-      <hr className={styles.hr} />
-      <div>
-        <p>
-          The button below will throw 2 errors. You'll see the error overlay to
-          let you know about the errors but it won't break the page or reset
-          your state.
-        </p>
-        <Button
-          onClick={(e) => {
-            setTimeout(() => document.parentNode(), 0)
-            throwError()
-          }}
-        >
-          Throw an Error
-        </Button>
-      </div>
-      <hr className={styles.hr} />
-    </main>
-  )
+    </body>
+  );
 }
 
-export default Home
+export default Home;
