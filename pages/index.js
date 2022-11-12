@@ -1,5 +1,6 @@
 import Button from "../components/Button";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 import Overwiew from "../components/Overwiew";
 import Settings from "../components/Settings";
 import Shots from "../components/Shots";
@@ -13,7 +14,7 @@ function Home() {
             <a href="#" className="block uppercase flex item-center">
               <box-icon type="solid" name="rocket"></box-icon>
               <span className="inline-block text-sm font-bold ml-2">
-                <span className="text-gray-700">Starter</span>
+                <span className="text-gray-700">Starter with nextjs</span>
               </span>
             </a>
             <div className="flex justify-between item-center">
@@ -39,6 +40,7 @@ function Home() {
             <Button>View All</Button>
           </Card>
         </div>
+        <Footer />
       </div>
     </body>
   );
